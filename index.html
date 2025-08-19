@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Wash Express</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="Images/IMG_8410 Wash Wheels logo.jpg" alt="Wash Wheels Logo" class="logo">
+    <p>Elige un paquete para conocer más y agendar tu cita</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Carrusel de paquetes -->
+    <div class="carrusel-paquetes">
+      <button class="flecha izquierda" onclick="cambiarPaquete(-1)">&#9664;</button>
+      
+      <div class="paquete-visible" id="paqueteActual">
+        <!-- contenido dinámico se inyecta con JS -->
+      </div>
+
+      <button class="flecha derecha" onclick="cambiarPaquete(1)">&#9654;</button>
+    </div>
+
+    <!-- Detalles del paquete -->
+    <div class="detalles-paquete" id="detallesPaquete">
+      <h2 id="tituloPaquete"></h2>
+      <ul id="listaServicios"></ul>
+      <button onclick="seleccionarPaquete()">Seleccionar este paquete</button>
+    </div>
+
+    <!-- Formulario de cita -->
+  <form id="formularioCita" onsubmit="enviarFormulario(event)">
+    <h2>Agendar cita</h2>
+    <label>Paquete seleccionado:</label>
+    <input type="text" id="paqueteSeleccionado" readonly required>
+
+    <label>Nombre completo:</label>
+    <input type="text" id="nombreInput" required>
+
+    <label>Teléfono:</label>
+    <input type="tel" id="telefonoInput" required>
+
+    <label>Fecha:</label>
+    <input type="date" id="fechaInput" required>
+
+    <label>Hora:</label>
+    <input type="time" id="horaInput" required>
+
+    <button type="submit">Agendar cita</button>
+  </form>
+
+  </div>
+
+  <script>
+    const paquetes = [
+      {
+        id: "Casi Flow",
+        icono: "🚗",
+        nombre: "Paquete CasiFlow",
+        lista: [
+          "✅ Lavado exterior",
+          "✅ Lavado de rines",
+          "✅ Secado manual con paño de microfibra",
+          "✅ Limpieza de vidrios exteriores"
+        ]
+      },
+      {
+        id: "Flow",
+        icono: "🧼",
+        nombre: "Paquete Flow",
+        lista: [
+          "✅ Limpieza interior básica",
+          "✅ Limpieza de tableros y plásticos",
+          "✅ Limpieza de vidrios exteriores e interiores",
+          "✅ Limpieza superficial de llantas"
+        ]
+      },
+      {
+        id: "Super Flow",
+        icono: "✨",
+        nombre: "Paquete SuperFlow",
+        lista: [
+          "✅ Limpieza interior y exterior",
+          "✅ Lavado de alfombras y asiento con cepillo manual",
+          "✅ Tratamiento abrillantador para tableros y plásticos",
+          "✅ Limpieza llantas y rines, vidrios interiores y exteriores"
+        ]
+      },
+      {
+        id: "Premium Flow",
+        icono: "✨",
+        nombre: "Paquete PremiumFlow",
+        lista: [
+          "✅ Cera líquida",
+          "✅ Protector UV",
+          "✅ Hidratación profunda de asientos, cuero y telas",
+          "✅ Detallado de ranuras y zonas difíciles"
+        ]
+      }
+    ];
+
+    let paqueteIndex = 0;
+    let paqueteActual = "";
+
+    function renderPaquete() {
+      const contenedor = document.getElementById("paqueteActual");
+      const paquete = paquetes[paqueteIndex];
+
+      contenedor.innerHTML = `
+        <div class="icono" onclick="mostrarDetalles('${paquete.id}')">
+          ${paquete.icono}
+          <span>${paquete.nombre}</span>
+        </div>
+      `;
+
+      document.getElementById("detallesPaquete").style.display = "none";
+      document.getElementById("formularioCita").style.display = "none";
+    }
+
+    function cambiarPaquete(direccion) {
+      paqueteIndex = (paqueteIndex + direccion + paquetes.length) % paquetes.length;
+      renderPaquete();
+    }
+
+    function mostrarDetalles(id) {
+      const paquete = paquetes.find(p => p.id === id);
+      const titulo = document.getElementById("tituloPaquete");
+      const lista = document.getElementById("listaServicios");
+      const detalles = document.getElementById("detallesPaquete");
+
+      titulo.textContent = paquete.nombre;
+      lista.innerHTML = "";
+      paquete.lista.forEach(servicio => {
+        const li = document.createElement("li");
+        li.textContent = servicio;
+        lista.appendChild(li);
+      });
+
+      paqueteActual = paquete.nombre;
+      detalles.style.display = "block";
+    }
+
+    function seleccionarPaquete() {
+       const urlSetmore = "https://carwashec.setmore.com"; // <-- cambia por tu URL de Setmore
+  
+      // Opcional: pasar el paquete seleccionado como query param
+      const urlConPaquete = `${urlSetmore}?paquete=${encodeURIComponent(paqueteActual)}`;
+
+      // Redirigir a Setmore
+      window.open(urlConPaquete, "_blank");
+    }
+
+    // Mostrar primer paquete al cargar
+    window.onload = renderPaquete;
+  </script>
+  
+  <script src="app.js"></script>
+</body>
+</html>
