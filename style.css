@@ -39,6 +39,12 @@ header .logo {
   margin: 30px 0;
 }
 
+.notas p {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
 .flecha {
   background: #007BFF;
   border-radius: 50%;
