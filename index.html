@@ -8,161 +8,86 @@
 </head>
 <body>
 
-  <header>
-    <img src="Images/IMG_8410 Wash Wheels logo.jpg" alt="Wash Wheels Logo" class="logo">
-    <p>Elige un paquete para conocer más y agendar tu cita</p>
+  <!-- Encabezado -->
+  <header class="header">
+    <div class="header-logo">
+        <img src="Images/IMG_8410 Wash Wheels logo.jpg" alt="Wash Wheels Logo" class="logo">
+    </div>
+    <h1>Wash Wheel's se preocupa por</h1>
+    <p>Dejar tu auto como nuevo en minutos 🚗✨</p>
+    <a href="https://washwheels.setmore.com" class="btn-principal" target="_blank">Agendar cita ahora</a>
   </header>
 
-  <div class="notas">
-    <p class="nota-agenda">Si quieres agendar más de un carro, colócalo en notas/comentarios de la cita.</p>
-  </div>
-
-  <div class="container">
-
-    <!-- Carrusel de paquetes -->
-    <div class="carrusel-paquetes">
-      <button class="flecha izquierda" onclick="cambiarPaquete(-1)">&#9664;</button>
-      
-      <div class="paquete-visible" id="paqueteActual">
-        <!-- contenido dinámico se inyecta con JS -->
+  <!-- Paquetes -->
+  <section class="paquetes">
+    <h2>Nuestros Paquetes</h2>
+    <div class="grid-paquetes">
+      <div class="paquete">
+        <h3>🚗 Casi Flow</h3>
+        <p>Lavado exterior, rines y vidrios.</p>
+        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
       </div>
-
-      <button class="flecha derecha" onclick="cambiarPaquete(1)">&#9654;</button>
+      <div class="paquete">
+        <h3>🧼 Flow</h3>
+        <p>Limpieza interior básica y vidrios.</p>
+        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+      </div>
+      <div class="paquete">
+        <h3>✨ Super Flow</h3>
+        <p>Interior y exterior + alfombras y plásticos.</p>
+        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+      </div>
+      <div class="paquete">
+        <h3>💎 Premium Flow</h3>
+        <p>Cera líquida, hidratación profunda y detallado.</p>
+        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Detalles del paquete -->
-    <div class="detalles-paquete" id="detallesPaquete">
-      <h2 id="tituloPaquete"></h2>
-      <ul id="listaServicios"></ul>
-      <button onclick="seleccionarPaquete()">Seleccionar este paquete</button>
+   <section class="extras">
+    <div class="extras-info">
+      <p><strong>Extras disponibles:</strong> Cada paquete puede personalizarse agregando opciones extra al momento de seleccionarlo. ¡Elige lo que más se ajuste a tus necesidades!</p>
     </div>
+  </section>
 
-    <!-- Formulario de cita -->
-  <form id="formularioCita" onsubmit="enviarFormulario(event)">
-    <h2>Agendar cita</h2>
-    <label>Paquete seleccionado:</label>
-    <input type="text" id="paqueteSeleccionado" readonly required>
+  <!-- Foto de costos / detalles -->
+  <section class="costos">
+    <h2>Detalles y costos de nuestros servicios</h2>
+    <div class="cost-image">
+      <img src="Images/Costos.jpg" alt="Detalles y costos de servicios">
+    </div>
+  </section>
 
-    <label>Nombre completo:</label>
-    <input type="text" id="nombreInput" required>
+  <!-- Galería -->
+  <section class="galeria">
+    <h2>Resultados de nuestro trabajo</h2>
+    <div class="imagenes">
+      <img src="Images/Antesjpg.jpg" alt="Carro limpio">
+      <img src="Images/Despues.jpg" alt="Carro encerado">
+      <img src="Images/llanta.jpg" alt="Antes y después">
+    </div>
+  </section>
 
-    <label>Teléfono:</label>
-    <input type="tel" id="telefonoInput" required>
+  <!-- Testimonios -->
+  <section class="testimonios">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <blockquote>"Rápido y excelente servicio, mi auto quedó como nuevo" ⭐⭐⭐⭐⭐</blockquote>
+    <blockquote>"La mejor relación calidad-precio en la ciudad" ⭐⭐⭐⭐⭐</blockquote>
+  </section>
 
-    <label>Fecha:</label>
-    <input type="date" id="fechaInput" required>
+  <!-- Contacto -->
+  <section class="contacto">
+    <h2>Encuéntranos</h2>
+    <p>📍 Dirección: Casa del junit0</p>
+    <p>📞 Tel: 099 361 2626</p>
+    <p>💬 WhatsApp: <a href="https://wa.me/593993612626" target="_blank">Enviar mensaje</a></p>
+  </section>
 
-    <label>Hora:</label>
-    <input type="time" id="horaInput" required>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Wash Wheel's  - Todos los derechos reservados</p>
+  </footer>
 
-    <button type="submit">Agendar cita</button>
-  </form>
-
-  </div>
-
-  <script>
-    const paquetes = [
-      {
-        id: "Casi Flow",
-        icono: "🚗",
-        nombre: "Paquete CasiFlow",
-        lista: [
-          "✅ Lavado exterior",
-          "✅ Lavado de rines",
-          "✅ Secado manual con paño de microfibra",
-          "✅ Limpieza de vidrios exteriores"
-        ]
-      },
-      {
-        id: "Flow",
-        icono: "🧼",
-        nombre: "Paquete Flow",
-        lista: [
-          "✅ Limpieza interior básica",
-          "✅ Limpieza de tableros y plásticos",
-          "✅ Limpieza de vidrios exteriores e interiores",
-          "✅ Limpieza superficial de llantas"
-        ]
-      },
-      {
-        id: "Super Flow",
-        icono: "✨",
-        nombre: "Paquete SuperFlow",
-        lista: [
-          "✅ Limpieza interior y exterior",
-          "✅ Lavado de alfombras y asiento con cepillo manual",
-          "✅ Tratamiento abrillantador para tableros y plásticos",
-          "✅ Limpieza llantas y rines, vidrios interiores y exteriores"
-        ]
-      },
-      {
-        id: "Premium Flow",
-        icono: "✨",
-        nombre: "Paquete PremiumFlow",
-        lista: [
-          "✅ Cera líquida",
-          "✅ Protector UV",
-          "✅ Hidratación profunda de asientos, cuero y telas",
-          "✅ Detallado de ranuras y zonas difíciles"
-        ]
-      }
-    ];
-
-    let paqueteIndex = 0;
-    let paqueteActual = "";
-
-    function renderPaquete() {
-      const contenedor = document.getElementById("paqueteActual");
-      const paquete = paquetes[paqueteIndex];
-
-      contenedor.innerHTML = `
-        <div class="icono" onclick="mostrarDetalles('${paquete.id}')">
-          ${paquete.icono}
-          <span>${paquete.nombre}</span>
-        </div>
-      `;
-
-      document.getElementById("detallesPaquete").style.display = "none";
-      document.getElementById("formularioCita").style.display = "none";
-    }
-
-    function cambiarPaquete(direccion) {
-      paqueteIndex = (paqueteIndex + direccion + paquetes.length) % paquetes.length;
-      renderPaquete();
-    }
-
-    function mostrarDetalles(id) {
-      const paquete = paquetes.find(p => p.id === id);
-      const titulo = document.getElementById("tituloPaquete");
-      const lista = document.getElementById("listaServicios");
-      const detalles = document.getElementById("detallesPaquete");
-
-      titulo.textContent = paquete.nombre;
-      lista.innerHTML = "";
-      paquete.lista.forEach(servicio => {
-        const li = document.createElement("li");
-        li.textContent = servicio;
-        lista.appendChild(li);
-      });
-
-      paqueteActual = paquete.nombre;
-      detalles.style.display = "block";
-    }
-
-    function seleccionarPaquete() {
-       const urlSetmore = "https://washwheels.setmore.com"; // <-- cambia por tu URL de Setmore
-  
-      // Opcional: pasar el paquete seleccionado como query param
-      const urlConPaquete = `${urlSetmore}?paquete=${encodeURIComponent(paqueteActual)}`;
-
-      // Redirigir a Setmore
-      window.open(urlConPaquete, "_blank");
-    }
-
-    // Mostrar primer paquete al cargar
-    window.onload = renderPaquete;
-  </script>
-  
-  <script src="app.js"></script>
 </body>
 </html>
