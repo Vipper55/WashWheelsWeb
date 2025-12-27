@@ -18,29 +18,63 @@
     <a href="https://washwheels.setmore.com" class="btn-principal" target="_blank">Agendar cita ahora</a>
   </header>
 
+  <!-- Selector de Vehículo -->
+  <section class="selector-vehiculo">
+    <h2>Selecciona tu tipo de vehículo</h2>
+    <div class="vehiculos-grid">
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('automovil', 0)">
+        <div class="vehiculo-icon">🚗</div>
+        <h3>Automóvil</h3>
+        <p>Sedán, compacto</p>
+      </div>
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('suv', 15)">
+        <div class="vehiculo-icon">🚙</div>
+        <h3>SUV</h3>
+        <p>Camioneta mediana</p>
+      </div>
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('4x4', 20)">
+        <div class="vehiculo-icon">🚐</div>
+        <h3>4x4</h3>
+        <p>Todo terreno</p>
+      </div>
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('camioneta', 25)">
+        <div class="vehiculo-icon">🛻</div>
+        <h3>Camioneta</h3>
+        <p>Pick-up, van</p>
+      </div>
+    </div>
+    <div class="precio-info" id="precioInfo">
+      <p>👆 Selecciona tu tipo de vehículo para ver los precios actualizados</p>
+    </div>
+  </section>
+
   <!-- Paquetes -->
   <section class="paquetes">
     <h2>Nuestros Paquetes</h2>
     <div class="grid-paquetes">
       <div class="paquete">
         <h3>🚗 Casi Flow</h3>
+        <div class="precio" id="precio-casi-flow">$15</div>
         <p>Lavado exterior, rines y vidrios.</p>
-        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+        <a href="#" id="btn-casi-flow" class="btn disabled" onclick="return reservar('casi-flow')">Reservar</a>
       </div>
       <div class="paquete">
         <h3>🧼 Flow</h3>
+        <div class="precio" id="precio-flow">$20</div>
         <p>Limpieza interior básica y vidrios.</p>
-        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+        <a href="#" id="btn-flow" class="btn disabled" onclick="return reservar('flow')">Reservar</a>
       </div>
       <div class="paquete">
         <h3>✨ Super Flow</h3>
+        <div class="precio" id="precio-super-flow">$30</div>
         <p>Interior y exterior + alfombras y plásticos.</p>
-        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+        <a href="#" id="btn-super-flow" class="btn disabled" onclick="return reservar('super-flow')">Reservar</a>
       </div>
       <div class="paquete">
         <h3>💎 Premium Flow</h3>
+        <div class="precio" id="precio-premium-flow">$45</div>
         <p>Cera líquida, hidratación profunda y detallado.</p>
-        <a href="https://washwheels.setmore.com" target="_blank" class="btn">Reservar</a>
+        <a href="#" id="btn-premium-flow" class="btn disabled" onclick="return reservar('premium-flow')">Reservar</a>
       </div>
     </div>
   </section>
@@ -87,6 +121,106 @@
   <footer>
     <p>&copy; 2025 Wash Wheel's  - Todos los derechos reservados</p>
   </footer>
+
+  <script>
+    // Precios base de cada servicio
+    const preciosBase = {
+      'casi-flow': 15,
+      'flow': 20,
+      'super-flow': 30,
+      'premium-flow': 45
+    };
+
+    // URLs de Setmore por tipo de vehículo y servicio
+    const urlsSetmore = {
+      'automovil': {
+        'casi-flow': 'https://washwheels.setmore.com',
+        'flow': 'https://washwheels.setmore.com',
+        'super-flow': 'https://washwheels.setmore.com',
+        'premium-flow': 'https://washwheels.setmore.com'
+      },
+      'suv': {
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=7d26e4cb-58f4-4313-8340-bdcd7b888aa5&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com',
+        'super-flow': 'https://washwheels.setmore.com',
+        'premium-flow': 'https://washwheels.setmore.com'
+      },
+      '4x4': {
+        'casi-flow': 'https://washwheels.setmore.com',
+        'flow': 'https://washwheels.setmore.com',
+        'super-flow': 'https://washwheels.setmore.com',
+        'premium-flow': 'https://washwheels.setmore.com'
+      },
+      'camioneta': {
+        'casi-flow': 'https://washwheels.setmore.com',
+        'flow': 'https://washwheels.setmore.com',
+        'super-flow': 'https://washwheels.setmore.com',
+        'premium-flow': 'https://washwheels.setmore.com'
+      }
+    };
+
+    let tipoVehiculoSeleccionado = null;
+    let incrementoPorcentaje = 0;
+
+    function seleccionarVehiculo(tipo, incremento) {
+      // Remover selección anterior
+      const cards = document.querySelectorAll('.vehiculo-card');
+      cards.forEach(card => card.classList.remove('selected'));
+
+      // Marcar nueva selección
+      event.currentTarget.classList.add('selected');
+
+      tipoVehiculoSeleccionado = tipo;
+      incrementoPorcentaje = incremento;
+
+      // Actualizar precios
+      actualizarPrecios(incremento);
+
+      // Habilitar botones de reserva
+      habilitarBotones();
+
+      // Actualizar mensaje
+      const nombres = {
+        'automovil': 'Automóvil',
+        'suv': 'SUV',
+        '4x4': '4x4',
+        'camioneta': 'Camioneta'
+      };
+      
+      let mensaje = `✅ Has seleccionado: <strong>${nombres[tipo]}</strong>`;
+      if (incremento > 0) {
+        mensaje += ` (+${incremento}% sobre precio base)`;
+      }
+      document.getElementById('precioInfo').innerHTML = `<p>${mensaje}</p>`;
+    }
+
+    function actualizarPrecios(incremento) {
+      for (let servicio in preciosBase) {
+        const precioBase = preciosBase[servicio];
+        const precioFinal = precioBase + (precioBase * incremento / 100);
+        document.getElementById(`precio-${servicio}`).textContent = `$${precioFinal.toFixed(0)}`;
+      }
+    }
+
+    function habilitarBotones() {
+      const botones = ['casi-flow', 'flow', 'super-flow', 'premium-flow'];
+      botones.forEach(servicio => {
+        const btn = document.getElementById(`btn-${servicio}`);
+        btn.classList.remove('disabled');
+      });
+    }
+
+    function reservar(servicio) {
+      if (!tipoVehiculoSeleccionado) {
+        alert('Por favor, selecciona primero tu tipo de vehículo');
+        return false;
+      }
+
+      const url = urlsSetmore[tipoVehiculoSeleccionado][servicio];
+      window.open(url, '_blank');
+      return false;
+    }
+  </script>
 
 </body>
 </html>
