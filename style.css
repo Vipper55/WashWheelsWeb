@@ -43,7 +43,7 @@ header {
   background: #fb8500;
 }
 
-/* Selector de Vehículo - NUEVO */
+/* Selector de Vehículo */
 .selector-vehiculo {
   max-width: 1200px;
   margin: 40px auto;
@@ -62,8 +62,8 @@ header {
 
 .vehiculos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
   margin-bottom: 20px;
 }
 
@@ -71,7 +71,7 @@ header {
   background: #f8f9fa;
   border: 3px solid #ddd;
   border-radius: 12px;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
@@ -90,12 +90,12 @@ header {
 }
 
 .vehiculo-icon {
-  font-size: 4em;
+  font-size: 3em;
   margin-bottom: 10px;
 }
 
 .vehiculo-card h3 {
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #333;
   margin-bottom: 5px;
 }
@@ -103,6 +103,7 @@ header {
 .vehiculo-card p {
   font-size: 0.9em;
   color: #666;
+  font-weight: bold;
 }
 
 .precio-info {
@@ -231,6 +232,25 @@ footer {
   }
 
   .vehiculo-icon {
-    font-size: 3em;
+    font-size: 2.5em;
+  }
+
+  .vehiculo-card h3 {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehiculos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .vehiculo-card {
+    padding: 10px;
+  }
+
+  .vehiculo-icon {
+    font-size: 2em;
   }
 }
