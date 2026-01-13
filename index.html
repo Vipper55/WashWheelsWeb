@@ -27,25 +27,25 @@
         <h3>Sedán / Coupé</h3>
         <p>Precio base</p>
       </div>
-      <div class="vehiculo-card" onclick="seleccionarVehiculo('hatchback', 30)">
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('hatchback', 15)">
         <div class="vehiculo-icon">🚗</div>
         <h3>Hatchback</h3>
-        <p>+30%</p>
+        <p>+15%</p>
       </div>
-      <div class="vehiculo-card" onclick="seleccionarVehiculo('suv', 35)">
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('suv', 25)">
         <div class="vehiculo-icon">🚙</div>
         <h3>SUV</h3>
-        <p>+35%</p>
+        <p>+25%</p>
       </div>
-      <div class="vehiculo-card" onclick="seleccionarVehiculo('crossover', 30)">
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('crossover', 20)">
         <div class="vehiculo-icon">🚘</div>
         <h3>Crossover</h3>
-        <p>+30%</p>
+        <p>+20%</p>
       </div>
-      <div class="vehiculo-card" onclick="seleccionarVehiculo('pickup', 50)">
+      <div class="vehiculo-card" onclick="seleccionarVehiculo('pickup', 40)">
         <div class="vehiculo-icon">🛻</div>
         <h3>Pick-up</h3>
-        <p>+50%</p>
+        <p>+40%</p>
       </div>
       <div class="vehiculo-card" onclick="seleccionarVehiculo('deportivo', 35)">
         <div class="vehiculo-icon">🏎️</div>
@@ -92,7 +92,7 @@
       </div>
       <div class="paquete">
         <h3>💎 Premium Flow</h3>
-        <div class="precio" id="precio-premium-flow">$35</div>
+        <div class="precio" id="precio-premium-flow">$30</div>
         <p>Cera líquida, hidratación profunda y detallado.</p>
         <a href="#" id="btn-premium-flow" class="btn disabled" onclick="return reservar('premium-flow')">Reservar</a>
       </div>
@@ -148,58 +148,58 @@
       'casi-flow': 12,
       'flow': 17,
       'super-flow': 25,
-      'premium-flow': 35
+      'premium-flow': 30
     };
 
     // URLs de Setmore por tipo de vehículo y servicio
     const urlsSetmore = {
       'sedan': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=ee2f18d0-50c9-454f-b69c-40b172735268&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=f4a12269-bede-42d7-8411-7ffc40d6d28b&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=98f7815d-8b55-4706-87df-c404275e405f&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9e120d71-2eee-42f5-aaa0-6c9b4974f9a1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=ee2f18d0-50c9-454f-b69c-40b172735268%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=f4a12269-bede-42d7-8411-7ffc40d6d28b%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=98f7815d-8b55-4706-87df-c404275e405f%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9e120d71-2eee-42f5-aaa0-6c9b4974f9a1%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'hatchback': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8cc9542d-0382-4914-b1d4-b69a77d1d0a2&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=2ced89fb-73dd-4c22-bec1-772de2e32a91&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=dd71c167-7c4d-4579-b5fd-8bc3487febe4&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=a280930a-9d5b-4704-8af3-761926191601&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8cc9542d-0382-4914-b1d4-b69a77d1d0a2%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=2ced89fb-73dd-4c22-bec1-772de2e32a91%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=dd71c167-7c4d-4579-b5fd-8bc3487febe4%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=a280930a-9d5b-4704-8af3-761926191601%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'suv': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=7d26e4cb-58f4-4313-8340-bdcd7b888aa5&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=98eedfff-11c5-473e-9bc8-d5984db86812&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8576d92e-744f-42d8-884a-6e9dcaa420fb&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=fce77f25-37cf-47a9-98b6-037e822e057f&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=7d26e4cb-58f4-4313-8340-bdcd7b888aa5%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=98eedfff-11c5-473e-9bc8-d5984db86812%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8576d92e-744f-42d8-884a-6e9dcaa420fb%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=fce77f25-37cf-47a9-98b6-037e822e057f%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'crossover': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9829a0e4-4a10-4ffc-92b7-4fbabf4bb3f3&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=85832783-3313-4cd9-80dd-3a35fd1a747e&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8c586a83-5630-43d8-a5f3-2537feabc6d5&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=fd91980f-4947-4aef-b0d3-9df9e250c45d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9829a0e4-4a10-4ffc-92b7-4fbabf4bb3f3%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=85832783-3313-4cd9-80dd-3a35fd1a747e%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=8c586a83-5630-43d8-a5f3-2537feabc6d5%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=fd91980f-4947-4aef-b0d3-9df9e250c45d%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'pickup': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=664abbd1-3a8d-4111-b3c5-87d73ea0c8d3&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=c2b067c9-8bbb-4601-a4b0-dcd39b6d20a4&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=95cd63ca-94b4-4b3d-9ac8-89e0ba45baef&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=cd35ef6e-bfa7-4381-ac27-0c1e77afc1f9&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=664abbd1-3a8d-4111-b3c5-87d73ea0c8d3%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=c2b067c9-8bbb-4601-a4b0-dcd39b6d20a4%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=95cd63ca-94b4-4b3d-9ac8-89e0ba45baef%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=cd35ef6e-bfa7-4381-ac27-0c1e77afc1f9%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'deportivo': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=e196c9e3-fb92-4064-94d2-9ec1f84c8ff4&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=d9d9ec7e-e85f-438b-ab34-df4b3e73a5f4&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=843a0845-b05e-4029-bbf0-5eae57a3bc0b&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=86ba58e6-a445-46c0-acc2-e76027531d26&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=e196c9e3-fb92-4064-94d2-9ec1f84c8ff4%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=d9d9ec7e-e85f-438b-ab34-df4b3e73a5f4%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=843a0845-b05e-4029-bbf0-5eae57a3bc0b%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=86ba58e6-a445-46c0-acc2-e76027531d26%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'monovolumen': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5d36d536-4d7f-4f76-ba55-6b17981b4e2e&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9608f1a0-b03b-4506-bf6b-f38b12c6933a&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=245a971c-7457-4e51-a40a-20ab1332b5f6&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=6cae8ad5-d6aa-4cc3-82fc-1f3d0c21158c&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5d36d536-4d7f-4f76-ba55-6b17981b4e2e%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=9608f1a0-b03b-4506-bf6b-f38b12c6933a%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=245a971c-7457-4e51-a40a-20ab1332b5f6%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=6cae8ad5-d6aa-4cc3-82fc-1f3d0c21158c%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       },
       'moto': {
-        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=6799fdf5-336d-4789-850d-0d5eb5abb6bb&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=7b6c972f-6a7f-43ef-b753-c564d032f628&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5eab5d88-defd-427f-8fcd-b4370e8ce9d7&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
-        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5fd96ad0-c36e-45d9-b6a5-61586fe5427c&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
+        'casi-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=6799fdf5-336d-4789-850d-0d5eb5abb6bb%7C4efab94f-478b-44f5-9103-3ec5913e86f1&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'flow': 'https://washwheels.setmore.com/book?step=additional-products&products=7b6c972f-6a7f-43ef-b753-c564d032f628%7Cd4646faf-6580-4381-9336-6681744cc599&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'super-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5eab5d88-defd-427f-8fcd-b4370e8ce9d7%7C35ada391-6a71-46eb-9e43-81ddbafd383d&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false',
+        'premium-flow': 'https://washwheels.setmore.com/book?step=additional-products&products=5fd96ad0-c36e-45d9-b6a5-61586fe5427c%7C1368b867-4967-4757-be6a-e4433e1f7610&type=service&staff=ce929281-dae0-44d8-9aa7-56509babbae8&staffSelected=false'
       }
     };
 
